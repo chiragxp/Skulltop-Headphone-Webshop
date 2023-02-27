@@ -1,0 +1,235 @@
+/* Chirag Parmar, Student ID: 8722174 */
+/*
+
+My Pair :: Windows and Chrome
+
+I have created 5 sections as asked in the Assignment:
+Section 1: Header
+Section 2: Navbar
+Section 3: Main content
+Section 4: Feature Section
+Section 5: Footer
+
+I have used Grid and Flexbox Both
+Flexbox is used for Header, Navbar, Main Content and Feature section
+and Layout Reordering is in Media Queries (In feature section)
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Praise&display=swap');
+
+/* FONTS USED IN THE SITE */
+/* font-family: 'Chivo', sans-serif */
+/* font-family: 'Open Sans', sans-serif; */
+
+
+/* Creating Varibales */
+:root{
+    --color-black: #000000;
+    --color-blue: #14213d;
+    --color-orange: #d68c14;
+    --color-off-white: #e5e5e5;
+    --color-white:  #ffffff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--color-off-white);
+}
+
+/* Creating custom styles */
+h1,h2,h3,h4{
+    font-family: 'Chivo', sans-serif;
+    text-transform: uppercase;
+}
+h1{
+    font-size: 44px;
+}
+h2{
+    font-size: 40px;
+}
+h3{
+    font-size: 36px;
+}
+h4{
+    font-size: 32px;
+}
+h5{
+    font-size: 26px;
+}
+h6{
+    font-size: 22px;
+}
+p{
+    font-size: 110%;
+}
+
+ul{
+    list-style: none;
+}
+
+/* GRID CONTAINER */
+.main{
+    display: grid;
+    grid-template:
+        'header header header'
+        'headline headline headline'
+        'feature feature feature'
+        'footer footer footer';
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.navbar{
+    background-color: var(--color-orange);
+    color: var(--color-black);
+    font-weight: bold;
+    font-style: italic;
+    grid-area: header;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 20px;
+}
+
+.navbar a:hover{
+    color: var(--color-blue);
+    border-bottom: 2px solid var(--color-blue);
+}
+
+/* Using flex for Logo and NavBar */
+.navbar .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Using flex for NavBar Elements */
+.navbar ul{
+    display: flex;
+}
+
+.navbar ul li{
+    margin-left: 20px;
+}
+
+.logo{
+    font-size: 54px;
+    text-shadow: 4px 1px var(--color-off-white);
+    font-family: 'Praise', cursive;
+    margin: 10px 0;
+}
+
+.header{
+    color: var(--color-blue);
+    line-height: 1.2;
+    grid-area: headline;
+}
+
+.header img{
+    max-width: 300px;
+    border-radius: 50%;
+    border-bottom: 8px solid var(--color-blue);
+}
+
+/* Using flex for Main Content: Heading and Image  */
+.header .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px auto;
+}
+
+.header p{
+    margin-top: 12px;
+    line-height: 1.2;
+    margin-bottom: 50px;
+}
+
+.boxes{
+    margin-bottom: 40px;
+    grid-area: feature;
+}
+
+/* Using flex for Feature Section */
+.boxes .container{
+    display: flex;
+
+    /* Using flex reordering */
+    flex-direction: row-reverse;
+}
+
+.box{
+    flex: 1;
+    background: var(--color-blue);
+    color: var(--color-off-white);
+    border-radius: 10px;
+    margin: 20px 10px;
+    box-shadow: 0 3px 5px var(--color-black);
+    padding: 15px 30px;
+}
+
+.box h5{
+    margin: 15px 0;
+}
+.box p{
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+footer{
+    background-color: var(--color-black);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: static;
+    bottom: 0px;
+    grid-area: footer;
+}
+
+.logofooter{
+    font-size: 40px;
+    font-family: 'Praise', cursive;
+    margin: 10px 0;
+}
+
+@media(max-width: 768px){
+    .main{
+        display: grid;
+        /* LAYOUT REORDERING */
+        grid-template:
+            'header header header'
+            'feature feature feature' /* section 3 is 2 now */
+            'headline headline headline' /* and section 2 is 3 */
+            'footer footer footer';
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    .header .container{
+        flex-direction: column;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .boxes .container{
+        display: block;
+        text-align: center;
+    }   
+}
